@@ -6,7 +6,7 @@
 
 Deployed website can be viewed here: https://pokemon-recommender.vercel.app/
 
-## Full Project
+## Original Project
 
 https://github.com/gaoqiangzhou/Pokemon
 
