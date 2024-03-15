@@ -12,4 +12,4 @@ https://github.com/gaoqiangzhou/Pokemon
 
 ## Backend
 
-https://github.com/vinukranaweera/pokemon-recommender
+https://github.com/vinukranaweera/pokemon-recommender-api
