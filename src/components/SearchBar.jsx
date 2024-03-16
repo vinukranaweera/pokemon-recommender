@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { usePokemonInfo } from '../context/PokeInfoContext';
 
-
-
 const SearchBar = () => {
     const {pokemons, pokemonsUpdate} = usePokemonInfo();
     const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
-    const NAME_ENDPOINT = (name) => `https://pokemon-recommender-api-ee8c8dbc2038.herokuapp.com/pokemon?name=${name}`;
+    const NAME_ENDPOINT = (name) => `https://pokemon-recommender-api-ee8c8dbc2038.herokuapp.com/pokemon?name=${name.charAt(0).toUpperCase() + name.slice(1)}`;
     const ID_ENDPOINT = (id) => `https://pokemon-recommender-api-ee8c8dbc2038.herokuapp.com/pokemon?id=${id}`
     const TYPE_ENDPOINT = (type) => `https://pokemon-recommender-api-ee8c8dbc2038.herokuapp.com/pokemon?type=${type}`
     const SPRITE = (num) => `${imageUrl}/${num}.png`
