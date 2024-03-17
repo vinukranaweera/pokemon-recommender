@@ -13,20 +13,27 @@ const SearchBar = () => {
     const [selectInput, setSelectInput] = useState("Normal");
     const [byName, setbyName] = useState(true);
     const types = ["Normal", "Fire", "Water", "Grass", "Flying", "Fighting", "Poison", "Electric", "Ground", "Rock", "Psychic", "Ice", "Bug", "Ghost", "Steel", "Dragon", "Dark", "Fairy"];
+    const [notFound, setNotFound] = useState(false);
     function isNumeric(value) {
         return /^-?\d+$/.test(value);
     }
 
     async function getOnePokemon(API){
-        const res = await axios.get(API);
-        const data = res.data;
-        const pk = 
-        {
+        try {
+          const res = await axios.get(API);
+          const data = res.data;
+          const pk = {
             ...data,
             spriteUrl: SPRITE(data["Pokedex Number"])
+          };
+          pokemonsUpdate((prev) => [...prev, pk]);
+          setNotFound(false); 
+        } catch (error) {
+          console.error(error);
+          setNotFound(true); 
         }
-        pokemonsUpdate((prev) => [...prev, pk]);
-    }
+      }
+
     async function getMultiplePokemons(API){
         const res = await axios.get(API);
         const data = res.data;
@@ -63,7 +70,7 @@ const SearchBar = () => {
       </select>
       {
         byName ?
-        (<input value={searchInput} onChange={(e) => {setSearchInput(e.target.value)}} className = "w-2/3 rounded-lg"></input>)
+        (<input type="text" placeholder="Search" value={searchInput} onChange={(e) => {setSearchInput(e.target.value)}} className = "w-2/3 rounded-lg"></input>)
         :
         (<select value={selectInput} onChange={(e) => {setSelectInput(e.target.value)}} className = "w-2/3 rounded-lg">
             {types.map((t) => <option key = {t} value = {t}> {t} </option>)}
@@ -74,6 +81,7 @@ const SearchBar = () => {
                 <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clipRule="evenodd" />
             </svg>
         </button>
+      {notFound && <span className="text-red-700">Not Found</span>}
     </form>
   )
 }

@@ -5,12 +5,14 @@ import SearchBar from './components/SearchBar';
 import PokemonCardList from './components/PokemonCardList';
 import PokeButton from './components/PokeButton';
 import PokeLogo from './image/pokelogo.png';
+import InfoButton from './components/InfoButton';
 
 function App() {
   const {pokemons, selectPks, selectPksUpdate, resultPks} = usePokemonInfo()
   return (
             <div className="bg-[#3466AF] max-h-screen">
               <div className="flex flex-col h-screen justify-center items-center">{/*flex wrapper*/}
+              <InfoButton className= "w-[50px] mx-auto h-[10%]"/>
                 <img src = {PokeLogo} className= "w-[200px] mx-auto h-[15%]"/>
                 <Containter className= "px-5 w-[90%] h-[8%]"><h1 className="text-center font-semibold">Build your best Pokémon team and determine your winning rates!</h1></Containter>
                 <div className="flex flex-row h-[75%] w-[90%]">

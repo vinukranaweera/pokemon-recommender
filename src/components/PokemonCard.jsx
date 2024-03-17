@@ -13,7 +13,14 @@ const PokemonCard = (props) => {
       <img src = {props.spriteUrl}></img>
       <div className="flex flex-col">
         <span>{props.name}</span>
-        <div><TypeBadge pokeType = {props.primary}/> / <TypeBadge pokeType = {props.secondary}/></div>
+        {props.primary === props.secondary ? (
+          <TypeBadge pokeType={props.primary} />
+        ) : (
+          <div>
+            <TypeBadge pokeType={props.primary} /> /{' '}
+            <TypeBadge pokeType={props.secondary} />
+          </div>
+        )}
       </div>
       <button className={"bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center" + props.hidden} onClick = {removePoke}>
         X
