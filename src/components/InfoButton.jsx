@@ -15,10 +15,10 @@ const InfoButton = ({ className }) => {
     position: 'fixed',
     //top: '20px', 
     //right: '65px',
-    top: '80px',
-    left: '50%', 
-    transform: 'translateX(-50%)', 
-    maxWidth: '95%',
+    top: '80px', // Adjust the top position as needed
+    left: '50%', // Center the box horizontally
+    transform: 'translateX(-50%)', // Move the box to the left by 50% of its width
+    maxWidth: '90%', // Limit the width to 90% of the viewport width 
     zIndex: '999', 
   };
 
@@ -41,7 +41,7 @@ const InfoButton = ({ className }) => {
       </button>
       {showInstructions && (
         <div className="overflow-x-auto">
-        <div style={messageStyle} className="bg-neutral-100/90 h-full md:max-w-[600px] lg:max-w-[800px] max-h-[80vh] h-auto md:h-[auto] p-4 mt-2 rounded-md shadow-md overflow-y-auto">
+        <div style={messageStyle} className="bg-neutral-100/90 w-full md:max-w-[600px] lg:max-w-[800px] max-h-[80vh] h-auto md:h-[auto] p-4 mt-2 rounded-md shadow-md overflow-y-auto">
           <h2 className="text-lg font-bold mb-2">Instructions:</h2>
           <ul style={{ listStyle: 'square', lineHeight: '1.5' }} className="p-2">
             <li>Enter a Pokémon name or ID in the search bar.</li>
